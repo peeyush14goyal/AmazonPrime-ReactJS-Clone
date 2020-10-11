@@ -1,0 +1,91 @@
+.header {
+  height: 72px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background-color: #0f171e;
+  font-size: 17px;
+  line-height: 24px;
+  padding: 16px 35px;
+  display: flex;
+}
+.primeIcon {
+  height: 50px;
+  position: relative;
+  top: 2px;
+  background-position: left 0;
+  object-fit: contain;
+  color: #0066c0;
+  filter: invert(1);
+}
+.iconDiv {
+  left: 0;
+}
+.navBarDiv {
+  display: flex;
+  color: rgba(242, 244, 246, 0.9);
+  padding-top: 10px;
+  font-size: 17px;
+  min-width: 250px;
+  align-content: space-between;
+}
+.navLinks {
+  margin: 8px;
+}
+.navLinks:hover {
+  color: white;
+  cursor: pointer;
+}
+.navLinks:active {
+  border-bottom: 2px solid white;
+  color: white;
+}
+.inputOuterDiv {
+  border: 1px solid gray;
+  width: 220px;
+  height: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.inputOuterDiv:hover {
+  border: 1px solid whitesmoke;
+}
+.inputBox {
+  border: none;
+  outline: none;
+  background-color: #0f171e;
+  color: white;
+  margin-left: 5px;
+  line-height: 20px;
+  font-size: 15px;
+  padding: 0px;
+}
+.inputBox::placeholder {
+  color: darkgray;
+}
+.inputDiv {
+  padding: 9px;
+  display: flex;
+}
+.searchIcon {
+  filter: invert(0.8);
+}
+.searchIcon:hover {
+  filter: invert(1);
+}
+.headerAlignEnd {
+  position: absolute;
+  right: 100px;
+  display: flex;
+}
+.account {
+  filter: invert(0.7);
+  width: 30px;
+  object-fit: contain;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+.account:hover {
+  filter: invert(1);
+  cursor: pointer;
+}
