@@ -2,3 +2,31 @@
   height: 160px;
   object-fit: contain;
 }
+.banner {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  justify-content: space-around;
+  margin-top: 250px;
+}
+.banner::-webkit-scrollbar {
+  display: none;
+}
+.mediaDiv {
+  height: 165px;
+}
+.mediaImg {
+  height: 160px;
+  object-fit: contain;
+  margin: 5px;
+  border-radius: 8px;
+}
+.mediaDiv:hover {
+  transform: scaleX(1.1) scaleZ(1.1);
+  height: 330px;
+  background-color: darkblue;
+  color: white;
+}
+.title {
+  color: white;
+}
