@@ -1,0 +1,96 @@
+.mediaDiv {
+  height: 165px;
+  transition: transform 0.5s;
+  cursor: pointer;
+  z-index: 0;
+}
+.mediaImg {
+  height: 160px;
+  object-fit: contain;
+  margin: 5px;
+  border-radius: 8px;
+}
+.mediaDiv:hover {
+  transform: scale(1.1);
+  color: white;
+  z-index: 5;
+  height: 500px;
+  margin-bottom: 100px;
+  overflow: visible;
+  opacity: 1;
+
+  .hoverData {
+    display: block;
+  }
+  .mediaImg {
+    height: 180px;
+    object-fit: contain;
+    margin: 0;
+    border-radius: 0%;
+  }
+}
+.hoverData {
+  display: none;
+  position: relative;
+  background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
+  padding: 30px 30px;
+  margin-top: -45px;
+}
+.playButton {
+  color: white;
+  transform: scale(1.3);
+}
+.playtext {
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.playDiv {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  width: 90px;
+}
+.playIcon {
+  width: 40px;
+}
+.addIcon {
+  color: white;
+}
+.hoverHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  font-weight: bold;
+  font-size: 15px;
+}
+.overview {
+  margin-top: 6px;
+  font-size: 12px;
+}
+.releaseYear {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 15px;
+}
+.runTime {
+  color: darkgray;
+  font-size: 12px;
+}
+.footerScreen {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.messageIcon {
+  color: darkgray;
+  max-height: 18px;
+}
+.rated {
+  border: 1px solid darkgray;
+  color: darkgray;
+  font-size: 10px;
+  padding: 5px;
+  height: 12px;
+}
