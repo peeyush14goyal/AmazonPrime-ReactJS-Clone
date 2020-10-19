@@ -1,8 +1,9 @@
 .mediaHoverImg {
   height: 180px;
-  object-fit: contain;
+  object-fit: cover;
   margin: 0;
   border-radius: 0%;
+  z-index: 2;
 }
 .hoverScreen {
   position: relative;
@@ -11,13 +12,14 @@
   left: 0;
   top: 0;
   opacity: 1;
-  z-index: 15;
+  z-index: 2;
 }
 .hoverData {
   position: relative;
   background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
   padding: 30px 30px;
   margin-top: -45px;
+  z-index: 2;
 }
 .playButton {
   color: white;

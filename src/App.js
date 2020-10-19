@@ -9,11 +9,11 @@ function App() {
       <Header />
       <div className="gap"></div>
       <div>
-        {/* <MediaScreen
+        <MediaScreen
           heading="Discover Movies"
           fetchURL="/discover/movie?api_key=989a8027930013244e3c2af17088dcac"
           API_KEY="989a8027930013244e3c2af17088dcac"
-        /> */}
+        />
       </div>
 
       <MediaScreen

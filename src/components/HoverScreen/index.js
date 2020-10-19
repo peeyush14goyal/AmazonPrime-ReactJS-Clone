@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import PlayCircleFilledWhiteOutlinedIcon from "@material-ui/icons/PlayCircleFilledWhiteOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import axios from "../../axios";
 
-const HoverScreen = ({ media, item }) => {
+const HoverScreen = ({ item, api_key }) => {
   let hours = 0,
     minutes = 0;
+  const [media, setMedia] = useState({});
+
+  useEffect(() => {
+    async function getData() {
+      const response = await axios.get(`/movie/${item.id}?api_key=${api_key}`);
+      setMedia(response.data);
+      return response;
+    }
+    getData();
+  }, [item, api_key]);
+
+  console.log(media);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
   if (media.runtime && media.runtime > 0) {

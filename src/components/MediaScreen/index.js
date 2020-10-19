@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import axios from "../../axios";
-import Screen from "../Screen";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import HoverScreen from "../HoverScreen";
 
 const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
   const [data, setData] = useState([]);
+  const base_url = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +26,20 @@ const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
       </div>
       <div className="banner">
         {data.map((item) => {
-          return <Screen item={item} api_key={API_KEY} />;
+          return (
+            <div>
+              <div className="mediaDiv" key={item.id}>
+                <img
+                  src={`${base_url}${item.backdrop_path}`}
+                  alt={item.name}
+                  className="mediaImg"
+                />
+              </div>
+              <div className="displayhoverScreen">
+                <HoverScreen item={item} api_key={API_KEY} />
+              </div>
+            </div>
+          );
         })}
       </div>
       <div className="rightIconDiv">

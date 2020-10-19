@@ -5,10 +5,10 @@
 .banner {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   justify-content: space-around;
   max-height: 165px;
-  //padding-top: 250px;
-  z-index: -1;
+  z-index: 0;
 }
 .banner::-webkit-scrollbar {
   display: none;
@@ -16,7 +16,7 @@
 .leftIconDiv {
   left: 0px;
   max-height: 166px;
-  z-index: 3;
+  z-index: 1;
   width: 30px;
   color: gray;
   position: absolute;
@@ -36,7 +36,7 @@
 .rightIconDiv {
   right: 0px;
   max-height: 166px;
-  z-index: 3;
+  z-index: 1;
   width: 40px;
   color: gray;
   position: absolute;
@@ -55,7 +55,46 @@
     transform: scale(1.5);
   }
 }
+
 .mediaScreen {
   margin-top: 30px;
   z-index: 0;
+}
+
+.mediaDiv {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  z-index: 0;
+}
+.mediaImg {
+  height: 160px;
+  object-fit: contain;
+  margin: 5px;
+  border-radius: 8px;
+  z-index: 0;
+  visibility: visible;
+}
+
+.displayhoverScreen {
+  display: none;
+  visibility: hidden;
+  position: relative;
+  z-index: 2;
+}
+.mediaDiv:hover {
+  .mediaImg {
+    visibility: hidden;
+  }
+  .banner {
+    overflow-y: visible;
+  }
+  .displayhoverScreen {
+    position: relative;
+    visibility: visible;
+    display: block;
+    padding: 1px;
+    z-index: 2;
+    top: -200px;
+  }
 }
