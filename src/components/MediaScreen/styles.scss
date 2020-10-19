@@ -7,8 +7,8 @@
   overflow-x: scroll;
   justify-content: space-around;
   max-height: 165px;
-  overflow-y: visible;
   //padding-top: 250px;
+  z-index: -1;
 }
 .banner::-webkit-scrollbar {
   display: none;
@@ -57,4 +57,5 @@
 }
 .mediaScreen {
   margin-top: 30px;
+  z-index: 0;
 }

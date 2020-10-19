@@ -37,5 +37,8 @@
   }
 }
 .gap {
-  min-height: 400px;
+  height: 400px;
+}
+.displayMovieLine {
+  margin-top: 4px;
 }
