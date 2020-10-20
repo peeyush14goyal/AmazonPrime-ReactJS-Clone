@@ -8,7 +8,7 @@
   overflow-y: hidden;
   justify-content: space-around;
   max-height: 165px;
-  z-index: 0;
+  z-index: -1;
 }
 .banner::-webkit-scrollbar {
   display: none;
@@ -62,7 +62,6 @@
 }
 
 .mediaDiv {
-  position: relative;
   width: 100%;
   cursor: pointer;
   z-index: 0;
@@ -78,23 +77,22 @@
 
 .displayhoverScreen {
   display: none;
-  visibility: hidden;
   position: relative;
   z-index: 2;
 }
 .mediaDiv:hover {
   .mediaImg {
+    display: none;
     visibility: hidden;
   }
+
   .banner {
     overflow-y: visible;
   }
   .displayhoverScreen {
-    position: relative;
-    visibility: visible;
+    position: absolute;
     display: block;
     padding: 1px;
     z-index: 2;
-    top: -200px;
   }
 }

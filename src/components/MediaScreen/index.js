@@ -34,9 +34,9 @@ const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
                   alt={item.name}
                   className="mediaImg"
                 />
-              </div>
-              <div className="displayhoverScreen">
-                <HoverScreen item={item} api_key={API_KEY} />
+                <div className="displayhoverScreen">
+                  <HoverScreen item={item} api_key={API_KEY} />
+                </div>
               </div>
             </div>
           );
