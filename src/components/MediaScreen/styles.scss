@@ -1,6 +1,7 @@
 .headingBanner {
   color: white;
   font-size: 19px;
+  margin-left: 20px;
 }
 .banner {
   display: flex;
@@ -66,7 +67,7 @@
   z-index: 0;
   padding: 10px 0px;
   padding-top: 20px;
-  transition: all 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 .mediaImg {
   height: 160px;
@@ -87,7 +88,7 @@
   padding: 0px;
   .mediaImg {
     height: 0px;
-    width: 300px;
+    width: 284px;
     visibility: hidden;
     // margin-top: -10px;
   }
@@ -96,7 +97,7 @@
     transform: scale(1);
     position: absolute;
     display: block;
-    padding: 1px;
+    // padding: 1px;
     z-index: 2;
   }
 }

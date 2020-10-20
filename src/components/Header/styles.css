@@ -8,7 +8,7 @@
   line-height: 24px;
   padding: 16px 35px;
   display: flex;
-  z-index: 2;
+  z-index: 6;
 }
 .primeIcon {
   height: 50px;

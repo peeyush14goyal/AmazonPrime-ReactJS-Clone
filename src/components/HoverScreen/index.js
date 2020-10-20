@@ -56,7 +56,8 @@ const HoverScreen = ({ item, api_key }) => {
         </div>
         <div className="footerScreen">
           <div className="runTime">
-            {hours}h {minutes}min
+            {hours > 0 ? `${hours}h ` : ""}
+            {minutes > 0 ? `${minutes}min` : ""}
           </div>
           <div className="releaseYear">{item.release_date.substr(0, 4)}</div>
           <div>

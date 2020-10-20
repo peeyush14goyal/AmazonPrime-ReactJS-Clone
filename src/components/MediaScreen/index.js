@@ -18,6 +18,17 @@ const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
     fetchData();
   }, [fetchURL]);
 
+  const shuffleData = (arr) => {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+  };
+  if (data.length > 0) {
+    shuffleData(data);
+  }
   return (
     <div className="mediaScreen">
       <div className="headingBanner">{heading}</div>
