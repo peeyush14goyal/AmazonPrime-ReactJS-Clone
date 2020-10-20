@@ -1,13 +1,12 @@
 .headingBanner {
   color: white;
-  font-size: 25px;
+  font-size: 19px;
 }
 .banner {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
   justify-content: space-around;
-  max-height: 165px;
   z-index: -1;
 }
 .banner::-webkit-scrollbar {
@@ -57,7 +56,7 @@
 }
 
 .mediaScreen {
-  margin-top: 30px;
+  margin-top: 10px;
   z-index: 0;
 }
 
@@ -65,6 +64,9 @@
   width: 100%;
   cursor: pointer;
   z-index: 0;
+  padding: 10px 0px;
+  padding-top: 20px;
+  transition: all 0.2s ease-out;
 }
 .mediaImg {
   height: 160px;
@@ -79,17 +81,19 @@
   display: none;
   position: relative;
   z-index: 2;
+  padding: 1px;
 }
 .mediaDiv:hover {
+  padding: 0px;
   .mediaImg {
-    display: none;
+    height: 0px;
+    width: 300px;
     visibility: hidden;
+    // margin-top: -10px;
   }
 
-  .banner {
-    overflow-y: visible;
-  }
   .displayhoverScreen {
+    transform: scale(1);
     position: absolute;
     display: block;
     padding: 1px;

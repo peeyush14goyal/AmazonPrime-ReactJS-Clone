@@ -1,7 +1,7 @@
 .mediaHoverImg {
-  height: 180px;
+  height: 160px;
   object-fit: cover;
-  margin: 0;
+  margin-left: 15px;
   border-radius: 0%;
   z-index: 2;
 }
@@ -18,6 +18,7 @@
   position: relative;
   background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
   padding: 30px 30px;
+  padding-bottom: 5px;
   margin-top: -45px;
   z-index: 2;
 }
@@ -34,7 +35,7 @@
   display: flex;
   justify-content: space-between;
   height: 30px;
-  width: 90px;
+  width: 65px;
 }
 .playIcon {
   width: 40px;
@@ -47,11 +48,12 @@
   justify-content: space-between;
 }
 .title {
-  font-weight: bold;
+  margin-top: 10px;
+  font-weight: 700;
   font-size: 15px;
 }
 .overview {
-  margin-top: 6px;
+  margin-top: 5px;
   font-size: 12px;
 }
 .releaseYear {
@@ -64,9 +66,10 @@
   font-size: 12px;
 }
 .footerScreen {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
+  width: 200px;
 }
 .messageIcon {
   color: darkgray;
@@ -76,6 +79,6 @@
   border: 1px solid darkgray;
   color: darkgray;
   font-size: 10px;
-  padding: 5px;
-  height: 12px;
+  padding: 3px;
+  height: 10px;
 }

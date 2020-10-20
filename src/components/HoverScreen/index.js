@@ -39,16 +39,15 @@ const HoverScreen = ({ item, api_key }) => {
             <div className="playIcon">
               <PlayCircleFilledWhiteOutlinedIcon
                 className="playButton"
-                fontSize="large"
+                fontSize="medium"
               />
             </div>
             <div className="playtext">Play</div>
           </div>
           <div>
-            <AddOutlinedIcon className="addIcon" fontSize="large" />
+            <AddOutlinedIcon className="addIcon" fontSize="medium" />
           </div>
         </div>
-        <br />
         <div className="title">{item.title}</div>
         <div className="overview">
           {item.overview.length > 90
