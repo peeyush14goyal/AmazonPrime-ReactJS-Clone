@@ -2,6 +2,8 @@
   color: white;
   font-size: 19px;
   margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .banner {
   display: flex;
@@ -100,4 +102,15 @@
     // padding: 1px;
     z-index: 2;
   }
+}
+
+.moreButton {
+  color: lightblue;
+  font-size: 14px;
+  margin-right: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.moreButton:hover {
+  color: white;
 }

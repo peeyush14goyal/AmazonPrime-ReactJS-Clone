@@ -4,8 +4,9 @@ import axios from "../../axios";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import HoverScreen from "../HoverScreen";
+import { Link } from "react-router-dom";
 
-const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
+const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1 }) => {
   const [data, setData] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -31,15 +32,25 @@ const MediaScreen = ({ heading, fetchURL, API_KEY }) => {
   }
   return (
     <div className="mediaScreen">
-      <div className="headingBanner">{heading}</div>
+      <div className="headingBanner">
+        <div>{heading}</div>
+        {genre > 0 ? (
+          <Link to={`/content?genre=${genre}&title=${heading}`}>
+            <div className="moreButton">see more</div>
+          </Link>
+        ) : (
+          <div></div>
+        )}
+      </div>
+
       <div className="leftIconDiv">
         <ChevronLeftIcon className="leftIcon" fontSize="large" />
       </div>
       <div className="banner">
         {data.map((item) => {
           return (
-            <div>
-              <div className="mediaDiv" key={item.id}>
+            <div key={item.id}>
+              <div className="mediaDiv">
                 <img
                   src={`${base_url}${item.backdrop_path}`}
                   alt={item.name}

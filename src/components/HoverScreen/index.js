@@ -10,6 +10,7 @@ const HoverScreen = ({ item, api_key }) => {
     minutes = 0;
   const [media, setMedia] = useState({});
 
+  console.log(api_key);
   useEffect(() => {
     async function getData() {
       const response = await axios.get(`/movie/${item.id}?api_key=${api_key}`);

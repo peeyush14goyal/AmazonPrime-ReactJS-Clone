@@ -1,0 +1,16 @@
+.contentTitle {
+  font-size: 18px;
+  color: gray;
+  margin-left: 15px;
+}
+.contentGridDisplay {
+  display: grid;
+  grid-template-columns: repeat(4, 3fr);
+  margin-left: 15px;
+  margin-right: 15px;
+  grid-gap: 8px;
+}
+.gridImg {
+  height: 150px;
+  object-fit: contain;
+}
