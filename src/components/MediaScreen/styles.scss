@@ -59,7 +59,7 @@
 }
 
 .mediaScreen {
-  margin-top: 10px;
+  margin-top: 5px;
   z-index: 0;
 }
 
@@ -68,14 +68,14 @@
   cursor: pointer;
   z-index: 0;
   padding: 10px 0px;
-  padding-top: 20px;
+  padding-top: 5px;
   transition: transform 0.2s ease-out;
 }
 .mediaImg {
   height: 160px;
-  object-fit: contain;
+  object-fit: cover;
   margin: 5px;
-  border-radius: 8px;
+  border-radius: 4px;
   z-index: 0;
   visibility: visible;
 }

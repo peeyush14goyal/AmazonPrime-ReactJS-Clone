@@ -67,6 +67,7 @@
 .inputDiv {
   padding: 9px;
   display: flex;
+  margin-right: 5px;
 }
 .searchIcon {
   filter: invert(0.8);
