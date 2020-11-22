@@ -5,12 +5,13 @@
 }
 .contentGridDisplay {
   display: grid;
-  grid-template-columns: repeat(4, 3fr);
-  margin-left: 15px;
-  margin-right: 15px;
+  grid-template-columns: repeat(5, 2fr);
+  margin: 0 auto;
+  margin-left: 10px;
   grid-gap: 8px;
+  overflow-x: hidden;
 }
 .gridImg {
-  height: 150px;
+  height: 130px;
   object-fit: contain;
 }

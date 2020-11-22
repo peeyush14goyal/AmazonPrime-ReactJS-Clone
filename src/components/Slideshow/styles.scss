@@ -1,0 +1,43 @@
+.SSdescription {
+  position: absolute;
+  color: white;
+  margin-top: 200px;
+  font-size: 35px;
+  width: 500px;
+  font-weight: bolder;
+  line-height: 1.5;
+  //background-color: rgba(223, 217, 217, 0.5);
+}
+.ssDiv {
+  display: none;
+  position: relative;
+  min-height: 800px;
+  max-height: 800px;
+}
+
+.ssOverview {
+  margin-top: 10px;
+  opacity: 1;
+  font-size: 20px;
+  color: darkgray;
+  font-weight: normal;
+  margin-left: 40px;
+}
+.ssTitle {
+  opacity: 1;
+  margin-left: 40px;
+}
+.ssVote {
+  margin-top: 15px;
+  margin-left: 40px;
+  font-size: 23px;
+  color: whitesmoke;
+}
+
+.slideshowImg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}

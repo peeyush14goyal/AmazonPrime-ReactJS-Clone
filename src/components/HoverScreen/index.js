@@ -10,7 +10,6 @@ const HoverScreen = ({ item, api_key }) => {
     minutes = 0;
   const [media, setMedia] = useState({});
 
-  console.log(api_key);
   useEffect(() => {
     async function getData() {
       const response = await axios.get(`/movie/${item.id}?api_key=${api_key}`);
@@ -19,8 +18,6 @@ const HoverScreen = ({ item, api_key }) => {
     }
     getData();
   }, [item, api_key]);
-
-  console.log(media);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
   if (media.runtime && media.runtime > 0) {
@@ -38,15 +35,12 @@ const HoverScreen = ({ item, api_key }) => {
         <div className="hoverHeading">
           <div className="playDiv">
             <div className="playIcon">
-              <PlayCircleFilledWhiteOutlinedIcon
-                className="playButton"
-                fontSize="medium"
-              />
+              <PlayCircleFilledWhiteOutlinedIcon className="playButton" />
             </div>
             <div className="playtext">Play</div>
           </div>
           <div>
-            <AddOutlinedIcon className="addIcon" fontSize="medium" />
+            <AddOutlinedIcon className="addIcon" />
           </div>
         </div>
         <div className="title">{item.title}</div>

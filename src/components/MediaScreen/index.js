@@ -6,7 +6,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import HoverScreen from "../HoverScreen";
 import { Link } from "react-router-dom";
 
-const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1 }) => {
+const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
   const [data, setData] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -18,6 +18,17 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1 }) => {
     }
     fetchData();
   }, [fetchURL]);
+
+  const scrollToLeft = () => {
+    document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
+      left: -800,
+    });
+  };
+  const scrollToRight = () => {
+    document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
+      left: 800,
+    });
+  };
 
   const shuffleData = (arr) => {
     for (var i = arr.length - 1; i > 0; i--) {
@@ -43,10 +54,11 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1 }) => {
         )}
       </div>
 
-      <div className="leftIconDiv">
+      <div className="leftIconDiv" onClick={scrollToLeft}>
         <ChevronLeftIcon className="leftIcon" fontSize="large" />
       </div>
-      <div className="banner">
+      <div className="banner" id={"bannerDiv" + moveCount.toString()}>
+        &nbsp;
         {data.map((item) => {
           return (
             <div key={item.id}>
@@ -64,7 +76,7 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1 }) => {
           );
         })}
       </div>
-      <div className="rightIconDiv">
+      <div className="rightIconDiv" onClick={scrollToRight}>
         <ChevronRightIcon className="rightIcon" fontSize="large" />
       </div>
     </div>

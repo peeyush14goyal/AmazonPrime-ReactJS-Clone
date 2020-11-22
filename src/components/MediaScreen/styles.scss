@@ -7,8 +7,9 @@
 }
 .banner {
   display: flex;
-  overflow-x: scroll;
   overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
   justify-content: space-around;
   z-index: -1;
 }
@@ -36,8 +37,9 @@
   }
 }
 .rightIconDiv {
+  margin-top: -180px;
   right: 0px;
-  max-height: 166px;
+  min-height: 166px;
   z-index: 1;
   width: 40px;
   color: gray;
@@ -45,11 +47,13 @@
   -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
   transition: opacity 0.25s ease, background-color 0.25s ease;
   background-color: rgba(15, 23, 30, 0.5);
+  //background-color: black;
   cursor: pointer;
 }
 .rightIcon {
   min-height: 160px;
   margin-left: 0px;
+  padding-top: -200px;
 }
 .rightIconDiv:hover {
   .rightIcon {
