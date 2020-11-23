@@ -1,0 +1,136 @@
+.movie_image {
+  width: 950px;
+  position: absolute;
+  right: 0px;
+  object-fit: contain;
+  z-index: -1;
+  top: 100px;
+}
+.imageDiv {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  top: 0;
+  height: 510px;
+  overflow: hidden;
+  width: 950px;
+  padding: 0px;
+}
+.divImage1 {
+  position: absolute;
+  top: 0;
+  width: 950px;
+  height: 600px;
+  right: 0;
+  background: linear-gradient(90deg, #0f171e 10%, rgba(15, 23, 30, 0));
+}
+.divImage2 {
+  position: absolute;
+  top: 0;
+  width: 950px;
+  height: 600px;
+  right: 0;
+  background: linear-gradient(0deg, #0f171e 0, rgba(15, 23, 30, 0) 50%);
+}
+.movieInfo {
+  position: absolute;
+  left: 0;
+  color: white;
+  margin-left: 30px;
+}
+.title2 {
+  font-size: 40px;
+  margin-top: 10px;
+  font-weight: normal;
+}
+.overview2 {
+  position: absolute;
+  margin-top: 40px;
+  z-index: 2;
+  width: 600px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.releaseYear2 {
+  font-size: 15px;
+  color: gray;
+  margin-bottom: 15px;
+}
+.runTime2 {
+  color: darkgray;
+  font-size: 15px;
+}
+.footerScreen2 {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+.messageIcon2 {
+  color: darkgray;
+  max-height: 18px;
+}
+.rated2 {
+  border: 1px solid darkgray;
+  color: darkgray;
+  font-size: 12px;
+  padding: 3px;
+  height: 10px;
+}
+.rating2 {
+  color: darkgray;
+  font-size: 15px;
+}
+.people {
+  position: absolute;
+  margin-top: 250px;
+  min-width: 700px;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  text-align: left;
+  z-index: 2;
+  grid-row-gap: 7px;
+  line-height: 1.5;
+}
+.peopleHeading {
+  color: gray;
+  font-weight: bold;
+}
+.peopleVal {
+  color: rgb(6, 167, 196);
+}
+.buttonGroup {
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 2;
+  position: absolute;
+  margin-top: 150px;
+  width: 750px;
+  padding: 0 auto;
+}
+
+.trailerIcon {
+  transform: rotate(90deg);
+}
+.moviePlayText {
+  color: white;
+  margin-left: 8px;
+  //font-size: 20px;
+  //margin-left: 10px;
+}
+.moviePlayIcon {
+  transform: scale(2);
+  background-size: 10px 10px;
+  background-color: white;
+  background-origin: content-box;
+  background-position: center center;
+  border-radius: 50%;
+  //margin-bottom: 30px;
+}
+.movieButton {
+  height: 50px;
+}
+.playmovieButton {
+  transform: scale(1.5);
+}

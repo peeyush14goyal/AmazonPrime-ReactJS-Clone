@@ -9,7 +9,7 @@ const Slideshow = ({ fetch_url, api_key }) => {
   var temp_int;
   const automaticSlideshow = () => {
     const x = document.getElementsByClassName("ssDiv");
-    console.log(x);
+
     var i;
     if (x.length === 0) {
       clearInterval(temp_int);

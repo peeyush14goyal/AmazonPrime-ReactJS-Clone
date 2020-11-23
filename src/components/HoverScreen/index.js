@@ -4,6 +4,7 @@ import PlayCircleFilledWhiteOutlinedIcon from "@material-ui/icons/PlayCircleFill
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import axios from "../../axios";
+import { Link } from "react-router-dom";
 
 const HoverScreen = ({ item, api_key }) => {
   let hours = 0,
@@ -26,41 +27,46 @@ const HoverScreen = ({ item, api_key }) => {
   }
   return (
     <div className="hoverScreen">
-      <img
-        src={`${base_url}${item.backdrop_path}`}
-        alt={item.name}
-        className="mediaHoverImg"
-      />
-      <div className="hoverData">
-        <div className="hoverHeading">
-          <div className="playDiv">
-            <div className="playIcon">
-              <PlayCircleFilledWhiteOutlinedIcon className="playButton" />
+      <Link
+        to={`/movie?id=${item.id}`}
+        style={{ textDecoration: "none", color: "white" }}
+      >
+        <img
+          src={`${base_url}${item.backdrop_path}`}
+          alt={item.name}
+          className="mediaHoverImg"
+        />
+        <div className="hoverData">
+          <div className="hoverHeading">
+            <div className="playDiv">
+              <div className="playIcon">
+                <PlayCircleFilledWhiteOutlinedIcon className="playButton" />
+              </div>
+              <div className="playtext">Play</div>
             </div>
-            <div className="playtext">Play</div>
+            <div>
+              <AddOutlinedIcon className="addIcon" />
+            </div>
           </div>
-          <div>
-            <AddOutlinedIcon className="addIcon" />
+          <div className="title">{item.title}</div>
+          <div className="overview">
+            {item.overview.length > 90
+              ? item.overview.substr(0, 89) + "..."
+              : item.overview}
+          </div>
+          <div className="footerScreen">
+            <div className="runTime">
+              {hours > 0 ? `${hours}h ` : ""}
+              {minutes > 0 ? `${minutes}min` : ""}
+            </div>
+            <div className="releaseYear">{item.release_date.substr(0, 4)}</div>
+            <div>
+              <ChatBubbleIcon className="messageIcon" />
+            </div>
+            <div className="rated">{item.adult ? "18+" : "ALL"}</div>
           </div>
         </div>
-        <div className="title">{item.title}</div>
-        <div className="overview">
-          {item.overview.length > 90
-            ? item.overview.substr(0, 89) + "..."
-            : item.overview}
-        </div>
-        <div className="footerScreen">
-          <div className="runTime">
-            {hours > 0 ? `${hours}h ` : ""}
-            {minutes > 0 ? `${minutes}min` : ""}
-          </div>
-          <div className="releaseYear">{item.release_date.substr(0, 4)}</div>
-          <div>
-            <ChatBubbleIcon className="messageIcon" />
-          </div>
-          <div className="rated">{item.adult ? "18+" : "ALL"}</div>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };

@@ -7,7 +7,6 @@ const AllContent = ({ API_KEY }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const genre_id = urlParams.get("genre");
   const heading = urlParams.get("title");
-  console.log("genre id is ", genre_id);
 
   const [allcontent, setContent] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";

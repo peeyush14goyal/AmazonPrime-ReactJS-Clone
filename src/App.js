@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home/index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AllContent from "./components/AllContent";
+import Movie from "./components/Movie/index";
 
 function App() {
   const api_key = "989a8027930013244e3c2af17088dcac";
@@ -23,6 +24,11 @@ function App() {
               exact
               path="/content"
               render={() => <AllContent API_KEY={api_key} />}
+            />
+            <Route
+              exact
+              path="/movie"
+              render={() => <Movie api_key={api_key} />}
             />
           </Switch>
         </div>

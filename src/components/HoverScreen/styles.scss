@@ -17,6 +17,7 @@
   opacity: 1;
   z-index: 2;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 .hoverData {
   position: relative;
@@ -25,6 +26,7 @@
   padding-bottom: 5px;
   margin-top: -45px;
   z-index: 2;
+  text-decoration: none;
 }
 .playButton {
   color: white;
@@ -36,6 +38,7 @@
   outline: none;
 }
 .playtext {
+  text-decoration: none;
   margin-top: 5px;
   font-size: 14px;
   font-weight: bold;
@@ -53,6 +56,7 @@
   color: white;
 }
 .hoverHeading {
+  text-decoration: none;
   display: flex;
   justify-content: space-between;
 }
@@ -60,10 +64,12 @@
   margin-top: 10px;
   font-weight: 700;
   font-size: 14px;
+  text-decoration: none;
 }
 .overview {
   margin-top: 5px;
   font-size: 11px;
+  text-decoration: none;
 }
 .releaseYear {
   font-size: 11px;
