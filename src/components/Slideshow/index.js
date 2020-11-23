@@ -6,10 +6,15 @@ const Slideshow = ({ fetch_url, api_key }) => {
   const [sshow, setSshow] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
   var startSS = 0;
+  var temp_int;
   const automaticSlideshow = () => {
     const x = document.getElementsByClassName("ssDiv");
+    console.log(x);
     var i;
-    for (i = 0; i < sshow.length; i++) {
+    if (x.length === 0) {
+      clearInterval(temp_int);
+    }
+    for (i = 0; i < sshow.length && x.length > 0; i++) {
       if (i === startSS) {
         x[i].style.display = "block";
         x[i].style.width = "100%";
@@ -24,7 +29,7 @@ const Slideshow = ({ fetch_url, api_key }) => {
     }
   };
 
-  setInterval(automaticSlideshow, 5000);
+  temp_int = setInterval(automaticSlideshow, 5000);
 
   useEffect(() => {
     async function fetchData() {
