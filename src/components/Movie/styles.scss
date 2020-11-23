@@ -37,6 +37,7 @@
   left: 0;
   color: white;
   margin-left: 30px;
+  z-index: 2;
 }
 .title2 {
   font-size: 40px;
@@ -44,52 +45,54 @@
   font-weight: normal;
 }
 .overview2 {
-  position: absolute;
-  margin-top: 40px;
-  z-index: 2;
+  //   position: absolute;
+  //   margin-top: 40px;
+  //z-index: 2;
+  margin-top: 20px;
   width: 600px;
   font-size: 16px;
   line-height: 1.5;
 }
 
-.releaseYear2 {
+.moviereleaseYear {
   font-size: 15px;
   color: gray;
   margin-bottom: 15px;
 }
-.runTime2 {
+.movierunTime {
   color: darkgray;
   font-size: 15px;
 }
-.footerScreen2 {
-  margin-top: 10px;
+.moviefooterScreen {
+  margin-top: 15px;
   display: flex;
   justify-content: space-between;
   width: 300px;
 }
-.messageIcon2 {
+.moviemessageIcon {
   color: darkgray;
   max-height: 18px;
 }
-.rated2 {
+.movierated {
   border: 1px solid darkgray;
   color: darkgray;
   font-size: 12px;
   padding: 3px;
   height: 10px;
 }
-.rating2 {
+.movierating {
   color: darkgray;
   font-size: 15px;
 }
 .people {
-  position: absolute;
-  margin-top: 250px;
-  min-width: 700px;
+  //position: absolute;
+  min-width: 500px;
+  max-width: 70%;
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 1.3fr 10.7fr;
   text-align: left;
-  z-index: 2;
+  margin-top: 40px;
+  //z-index: 2;
   grid-row-gap: 7px;
   line-height: 1.5;
 }
@@ -103,9 +106,9 @@
 .buttonGroup {
   display: flex;
   justify-content: space-evenly;
-  z-index: 2;
-  position: absolute;
-  margin-top: 150px;
+  // z-index: 2;
+  //position: absolute;
+  margin-top: 30px;
   width: 750px;
   padding: 0 auto;
 }
@@ -121,10 +124,7 @@
 }
 .moviePlayIcon {
   transform: scale(2);
-  background-size: 10px 10px;
   background-color: white;
-  background-origin: content-box;
-  background-position: center center;
   border-radius: 50%;
   //margin-bottom: 30px;
 }
@@ -133,4 +133,32 @@
 }
 .playmovieButton {
   transform: scale(1.5);
+}
+.relatedMovies {
+  position: absolute;
+  top: 650px;
+  max-width: 100%;
+}
+.tabHeading {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  text-align: center;
+  margin-left: 40%;
+  top: 800px;
+  color: gray;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.activeRelated {
+  border-bottom: 2px solid white;
+  color: white;
+}
+.activeDetails {
+  border-bottom: 2px solid white;
+  color: white;
+}
+.detailsCrew {
+  margin-left: 30px;
 }

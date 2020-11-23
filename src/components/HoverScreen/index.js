@@ -28,7 +28,7 @@ const HoverScreen = ({ item, api_key }) => {
   return (
     <div className="hoverScreen">
       <Link
-        to={`/movie?id=${item.id}`}
+        to={`/${item.media_type}?id=${item.id}`}
         style={{ textDecoration: "none", color: "white" }}
       >
         <img

@@ -23,11 +23,25 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: -800,
     });
+    var x = document.getElementById("hoverScreen" + moveCount.toString());
+    console.log("X values left: ", x.style);
+    x.style.left = "-800";
+    //x.css({ left: x.position().left - 800 + "px" });
+    // x.style({
+    //   left: -800,
+    // });
   };
   const scrollToRight = () => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: 800,
     });
+    var x = document.getElementById("hoverScreen" + moveCount.toString());
+    console.log("X values right: ", x.style);
+    //x.css({ left: x.position().left - 800 + "px" });
+    x.style.left = "800";
+    // x.style({
+    //   left: 800,
+    // });
   };
 
   const shuffleData = (arr) => {
@@ -68,7 +82,10 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
                   alt={item.name}
                   className="mediaImg"
                 />
-                <div className="displayhoverScreen">
+                <div
+                  className="displayhoverScreen"
+                  id={`hoverScreen${moveCount}`}
+                >
                   <HoverScreen item={item} api_key={API_KEY} />
                 </div>
               </div>

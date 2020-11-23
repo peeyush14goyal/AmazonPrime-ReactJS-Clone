@@ -6,15 +6,21 @@ import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite"
 import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Button from "@material-ui/core/Button";
+import MediaScreen from "../MediaScreen";
 
 const Movie = ({ api_key }) => {
   const [credits, setCredits] = useState();
   const [movieDetails, setDetails] = useState();
+  const [videoId, setVideoId] = useState();
+  const [detailShow, setShow] = useState(1);
   const base_url = "https://api.themoviedb.org/3/movie/";
   let detailsLoaded = false;
   let creditsLoaded = false;
   let hours, minutes;
-  let director;
+  let director = [];
+  let crew = [];
+  let writing = [];
+  let production = [];
 
   const urlParams = new URLSearchParams(window.location.search);
   const movie_id = urlParams.get("id");
@@ -49,7 +55,13 @@ const Movie = ({ api_key }) => {
     creditsLoaded = true;
     credits.crew.map((person) => {
       if (person.known_for_department === "Directing") {
-        director = person.name;
+        director.push(person.name);
+      } else if (person.known_for_department === "Production") {
+        production.push(person.name);
+      } else if (person.known_for_department === "Writing") {
+        writing.push(person.name);
+      } else if (person.known_for_department === "Crew") {
+        crew.push(person.name);
       }
       return person.name;
     });
@@ -72,88 +84,95 @@ const Movie = ({ api_key }) => {
                 : movieDetails.overview} */}
               {movieDetails.overview}
             </div>
-            <div className="footerScreen2">
-              <div className="rating2">IMDb {movieDetails.vote_average}</div>
-              <div className="runTime2">
+            <div className="moviefooterScreen">
+              <div className="movierating">
+                IMDb {movieDetails.vote_average}
+              </div>
+              <div className="movierunTime">
                 {hours > 0 ? `${hours}h ` : ""}
                 {minutes > 0 ? `${minutes}min` : ""}
               </div>
-              <div className="releaseYear2">
+              <div className="moviereleaseYear">
                 {movieDetails.release_date.substr(0, 4)}
               </div>
 
-              <div className="rated2">{movieDetails.adult ? "18+" : "ALL"}</div>
+              <div className="movierated">
+                {movieDetails.adult ? "18+" : "ALL"}
+              </div>
               <div>
-                <ChatBubbleIcon className="messageIcon2" fontSize="large" />
+                <ChatBubbleIcon className="moviemessageIcon" fontSize="large" />
               </div>
-              <div className="buttonGroup">
-                <div>
-                  <Button
-                    color="primary"
-                    className="playmovieButton"
-                    startIcon={
-                      <PlayCircleFilledWhiteIcon
-                        fontSize="large"
-                        color="primary"
-                        className="moviePlayIcon"
-                      />
-                    }
-                  >
-                    <text className="moviePlayText">Play</text>
-                  </Button>
-                </div>
-                <div>
-                  <Button
-                    variant="contained"
-                    className="movieButton"
-                    startIcon={<ChangeHistoryIcon className="trailerIcon" />}
-                  >
-                    Watch Trailer
-                  </Button>
-                </div>
-                <div>
-                  <Button
-                    variant="contained"
-                    color="default"
-                    className="movieButton"
-                  >
-                    Add to Watchlist
-                  </Button>
-                </div>
-                <div>
-                  <Button
-                    variant="contained"
-                    color="default"
-                    className="movieButton"
-                    startIcon={<GetAppIcon />}
-                  >
-                    Download
-                  </Button>
-                </div>
-              </div>
-              {creditsLoaded ? (
-                <div className="people">
-                  <div className="peopleHeading">Director</div>
-                  <div className="peopleVal">{director}</div>
-                  <div className="peopleHeading">Starring</div>
-                  <div className="peopleVal">
-                    {credits.cast.map((person) => {
-                      let str = `${person.name}, `;
-                      return str;
-                    })}
-                  </div>
-                  <div className="peopleHeading">Genres</div>
-                  <div className="peopleVal">
-                    {movieDetails.genres.map((genre) => {
-                      let str = `${genre.name}, `;
-                      return str;
-                    })}
-                  </div>
-                </div>
-              ) : (
-                <div></div>
-              )}
             </div>
+            <div className="buttonGroup">
+              <div>
+                <Button
+                  color="primary"
+                  className="playmovieButton"
+                  startIcon={
+                    <PlayCircleFilledWhiteIcon
+                      fontSize="large"
+                      color="primary"
+                      className="moviePlayIcon"
+                    />
+                  }
+                >
+                  <text className="moviePlayText">Play</text>
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  className="movieButton"
+                  startIcon={<ChangeHistoryIcon className="trailerIcon" />}
+                >
+                  Watch Trailer
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  color="default"
+                  className="movieButton"
+                >
+                  Add to Watchlist
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  color="default"
+                  className="movieButton"
+                  startIcon={<GetAppIcon />}
+                >
+                  Download
+                </Button>
+              </div>
+            </div>
+            {creditsLoaded ? (
+              <div className="people">
+                <div className="peopleHeading">Director</div>
+                <div className="peopleVal">{director}</div>
+                <div className="peopleHeading">Starring</div>
+                <div className="peopleVal">
+                  {credits.cast.map((person) => {
+                    let str = "";
+                    if (credits.cast.indexOf(person) < 11) {
+                      str = `${person.name}, `;
+                    }
+                    return str;
+                  })}
+                </div>
+                <div className="peopleHeading">Genres</div>
+                <div className="peopleVal">
+                  {movieDetails.genres.map((genre) => {
+                    let str = `${genre.name}, `;
+                    return str;
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
           <div className="imageDiv">
             <img
@@ -168,6 +187,92 @@ const Movie = ({ api_key }) => {
       ) : (
         <div></div>
       )}
+
+      <div className="relatedMovies">
+        <div>
+          <div className="tabHeading">
+            <div
+              onClick={() => {
+                setShow(1);
+              }}
+              className={detailShow === 1 ? "activeRelated" : ""}
+            >
+              Related
+            </div>
+            <div
+              onClick={() => {
+                setShow(0);
+              }}
+              className={detailShow === 0 ? "activeDetails" : ""}
+            >
+              Details
+            </div>
+          </div>
+          {detailsLoaded && detailShow === 1 ? (
+            <MediaScreen
+              heading="Customers also watched"
+              moveCount="movie10"
+              API_KEY={api_key}
+              fetchURL={`https://api.themoviedb.org/3/movie/${movieDetails.id}/similar?api_key=${api_key}&language=en-US&page=1`}
+            />
+          ) : (
+            <div className="detailsCrew">
+              <div className="people">
+                {production.length > 0 ? (
+                  <div className="peopleHeading">Production</div>
+                ) : (
+                  <div></div>
+                )}
+                {production.length > 0 ? (
+                  <div className="peopleVal">
+                    {production.map((person) => {
+                      let str = `${person}, `;
+                      return str;
+                    })}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {writing.length > 0 ? (
+                  <div className="peopleHeading">Writing</div>
+                ) : (
+                  <div></div>
+                )}
+                {writing.length > 0 ? (
+                  <div className="peopleVal">
+                    {writing.map((person) => {
+                      let str = `${person}, `;
+                      return str;
+                    })}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {crew.length > 0 ? (
+                  <div className="peopleHeading">Crew</div>
+                ) : (
+                  <div></div>
+                )}
+                {crew.length > 0 ? (
+                  <div className="peopleVal">
+                    {crew.map((person) => {
+                      let str = `${person}, `;
+                      return str;
+                    })}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
+          )}
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
     </div>
   );
 };
