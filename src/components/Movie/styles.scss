@@ -162,3 +162,20 @@
 .detailsCrew {
   margin-left: 30px;
 }
+.playTrailerVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: rgba(220, 220, 220, 0.5);
+  transition: background-color 1s ease-in;
+  padding-top: 100px;
+}
+.closeButtonDiv {
+  margin-left: 90%;
+}
+.closeIconButton {
+  transform: scale(2);
+}

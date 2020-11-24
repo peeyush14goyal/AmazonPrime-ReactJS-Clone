@@ -59,7 +59,9 @@ const HoverScreen = ({ item, api_key }) => {
               {hours > 0 ? `${hours}h ` : ""}
               {minutes > 0 ? `${minutes}min` : ""}
             </div>
-            <div className="releaseYear">{item.release_date.substr(0, 4)}</div>
+            <div className="releaseYear">
+              {item.release_date ? item.release_date.substr(0, 4) : ""}
+            </div>
             <div>
               <ChatBubbleIcon className="messageIcon" />
             </div>

@@ -7,12 +7,17 @@ import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Button from "@material-ui/core/Button";
 import MediaScreen from "../MediaScreen";
+import CancelIcon from "@material-ui/icons/Cancel";
+import IconButton from "@material-ui/core/IconButton";
+import YouTube from "react-youtube";
 
 const Movie = ({ api_key }) => {
   const [credits, setCredits] = useState();
   const [movieDetails, setDetails] = useState();
-  const [videoId, setVideoId] = useState();
+  const [videos, setVideo] = useState();
   const [detailShow, setShow] = useState(1);
+  const [YoutubePlay, setYoutubePlay] = useState(false);
+  const [trailer_id, setTrailer_id] = useState();
   const base_url = "https://api.themoviedb.org/3/movie/";
   let detailsLoaded = false;
   let creditsLoaded = false;
@@ -21,10 +26,19 @@ const Movie = ({ api_key }) => {
   let crew = [];
   let writing = [];
   let production = [];
+  const opts = {
+    width: "100%",
+    minHeight: "200%",
+    paddingTop: "56.25%", // Percentage ratio for 16:9
+    position: "absolute",
+    playerVars: {
+      autoplay: 1,
+      listType: "user_uploads",
+    },
+  };
 
   const urlParams = new URLSearchParams(window.location.search);
   const movie_id = urlParams.get("id");
-  console.log("Inside Movie");
 
   const image_base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -44,9 +58,36 @@ const Movie = ({ api_key }) => {
       console.log("Credits are ", response.data);
       setCredits(response.data);
     }
+    async function getVideo() {
+      const response = await axios.get(
+        `${base_url}${movie_id}/videos?api_key=${api_key}`
+      );
+      console.log(response.data.results);
+      setVideo(response.data.results);
+    }
     fetchCredits();
     fetchDetails();
+    getVideo();
   }, [base_url, movie_id, api_key]);
+
+  const playVideo = () => {
+    console.log("Videos are ", videos);
+    if (videos) {
+      setYoutubePlay(true);
+      // videos.map((video) => {
+      setTrailer_id(videos[0].key);
+      console.log("Id is ", trailer_id);
+      console.log("Youtube PLay value is ", YoutubePlay);
+      //setplay(0);
+      //console.log(play);
+
+      //});
+    } else {
+      setYoutubePlay(false);
+      console.log(" 0 Youtube PLay value is ", YoutubePlay);
+    }
+    return trailer_id;
+  };
 
   if (movieDetails) {
     detailsLoaded = true;
@@ -93,7 +134,9 @@ const Movie = ({ api_key }) => {
                 {minutes > 0 ? `${minutes}min` : ""}
               </div>
               <div className="moviereleaseYear">
-                {movieDetails.release_date.substr(0, 4)}
+                {movieDetails.release_date
+                  ? movieDetails.release_date.substr(0, 4)
+                  : ""}
               </div>
 
               <div className="movierated">
@@ -124,6 +167,9 @@ const Movie = ({ api_key }) => {
                   variant="contained"
                   className="movieButton"
                   startIcon={<ChangeHistoryIcon className="trailerIcon" />}
+                  onClick={() => {
+                    playVideo();
+                  }}
                 >
                   Watch Trailer
                 </Button>
@@ -188,6 +234,33 @@ const Movie = ({ api_key }) => {
         <div></div>
       )}
 
+      {YoutubePlay ? (
+        <div className="playTrailerVideo">
+          <div className="closeButtonDiv">
+            <IconButton
+              aria-label="close"
+              size="large"
+              onClick={() => {
+                setYoutubePlay(false);
+              }}
+              color="primary"
+              className="closeIconButton"
+            >
+              <CancelIcon />
+            </IconButton>
+          </div>
+          {console.log("Trailer id length is ", trailer_id)}
+          <YouTube
+            videoId={trailer_id}
+            opts={opts}
+            onError={() => {
+              alert("Youtube Not working");
+            }}
+          />
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className="relatedMovies">
         <div>
           <div className="tabHeading">

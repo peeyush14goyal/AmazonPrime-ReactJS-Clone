@@ -25,6 +25,8 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
       left: -800,
     });
     count++;
+
+    console.log("Left count is ", count);
     if (count > 0) {
       count = 0;
     }
@@ -34,21 +36,22 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
       left: 800,
     });
     count--;
-    if (count < -2) {
-      count = -2;
+    console.log("RIght count is ", count);
+    if (count < -3) {
+      count = -3;
     }
   };
 
   const setPosition = (item) => {
     var x = document.getElementById(`1${item.id}`);
-    console.log("From top x position is ", x.offsetTop);
-    console.log("From left x is at position is ", x.offsetLeft);
     var divItem = document.getElementById(`2${item.id}`);
     if (divItem) {
       divItem.style.position = "absolute";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
+      if (count === -3) {
+        count = -2.8;
+      }
       divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
-      console.log("Style of div item is ", divItem.style.left);
       return divItem.style;
     }
   };
