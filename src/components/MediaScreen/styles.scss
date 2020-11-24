@@ -68,12 +68,27 @@
 }
 
 .mediaDiv {
+  position: static;
   width: 100%;
   cursor: pointer;
   z-index: 0;
   padding: 10px 0px;
   padding-top: 5px;
-  transition: transform 0.2s ease-out;
+  .displayhoverScreen {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    padding: 1px;
+    min-height: 400px;
+    transform: scale(1);
+  }
+  &:hover > .displayhoverScreen {
+    //position: absolute;
+    display: block;
+
+    // padding: 1px;
+    //z-index: 3;
+  }
 }
 .mediaImg {
   height: 160px;
@@ -84,12 +99,6 @@
   visibility: visible;
 }
 
-.displayhoverScreen {
-  display: none;
-  position: relative;
-  z-index: 2;
-  padding: 1px;
-}
 .mediaDiv:hover {
   padding: 0px;
   .mediaImg {
@@ -97,14 +106,6 @@
     width: 284px;
     visibility: hidden;
     // margin-top: -10px;
-  }
-
-  .displayhoverScreen {
-    transform: scale(1);
-    position: absolute;
-    display: block;
-    // padding: 1px;
-    z-index: 2;
   }
 }
 
@@ -118,3 +119,8 @@
 .moreButton:hover {
   color: white;
 }
+// .hoverPosition {
+//   position: relative;
+//   overflow: visible;
+//   z-index: 2;
+// }

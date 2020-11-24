@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
   const [data, setData] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
+  var count = 0;
 
   useEffect(() => {
     async function fetchData() {
@@ -23,25 +24,33 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: -800,
     });
-    var x = document.getElementById("hoverScreen" + moveCount.toString());
-    console.log("X values left: ", x.style);
-    x.style.left = "-800";
-    //x.css({ left: x.position().left - 800 + "px" });
-    // x.style({
-    //   left: -800,
-    // });
+    count++;
+    if (count > 0) {
+      count = 0;
+    }
   };
   const scrollToRight = () => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: 800,
     });
-    var x = document.getElementById("hoverScreen" + moveCount.toString());
-    console.log("X values right: ", x.style);
-    //x.css({ left: x.position().left - 800 + "px" });
-    x.style.left = "800";
-    // x.style({
-    //   left: 800,
-    // });
+    count--;
+    if (count < -2) {
+      count = -2;
+    }
+  };
+
+  const setPosition = (item) => {
+    var x = document.getElementById(`1${item.id}`);
+    console.log("From top x position is ", x.offsetTop);
+    console.log("From left x is at position is ", x.offsetLeft);
+    var divItem = document.getElementById(`2${item.id}`);
+    if (divItem) {
+      divItem.style.position = "absolute";
+      divItem.style.top = parseInt(x.offsetTop, 10) + "px";
+      divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
+      console.log("Style of div item is ", divItem.style.left);
+      return divItem.style;
+    }
   };
 
   const shuffleData = (arr) => {
@@ -76,16 +85,20 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
         {data.map((item) => {
           return (
             <div key={item.id}>
-              <div className="mediaDiv">
+              <div
+                className="mediaDiv"
+                id={`1${item.id}`}
+                onMouseEnter={() => {
+                  setPosition(item);
+                }}
+              >
                 <img
                   src={`${base_url}${item.backdrop_path}`}
                   alt={item.name}
                   className="mediaImg"
                 />
-                <div
-                  className="displayhoverScreen"
-                  id={`hoverScreen${moveCount}`}
-                >
+
+                <div className="displayhoverScreen" id={`2${item.id}`}>
                   <HoverScreen item={item} api_key={API_KEY} />
                 </div>
               </div>
