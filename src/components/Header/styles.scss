@@ -31,16 +31,10 @@
   align-content: space-between;
 }
 .navLinks {
+  color: rgba(242, 244, 246, 0.9);
   margin: 8px;
 }
-.navLinks:hover {
-  color: white;
-  cursor: pointer;
-}
-.navLinks:active {
-  border-bottom: 2px solid white;
-  color: white;
-}
+
 .inputOuterDiv {
   border: 1px solid gray;
   width: 220px;
@@ -90,4 +84,26 @@
 .account:hover {
   filter: invert(1);
   cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: rgba(242, 244, 246, 0.9);
+}
+a:hover {
+  .textLink {
+    color: white;
+  }
+  .navLinks {
+    border-bottom: 2px solid white;
+    cursor: pointer;
+  }
+}
+a:active {
+  .textLink {
+    color: white;
+  }
+  .navLinks {
+    border-bottom: 2px solid white;
+    cursor: pointer;
+  }
 }

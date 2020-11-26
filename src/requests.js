@@ -1,30 +1,66 @@
-const API_KEY = "989a8027930013244e3c2af17088dcac";
+const API_KEY = "";
 
-const requests = {
-  getDiscoverMovies: {
+const requests = [
+  {
     title: "Discover",
     url: `/discover/movie?api_key=${API_KEY}`,
+    media: "movie",
   },
-  getComedyMovies: {
+  {
     title: "Comedy",
     url: `/discover/movie?api_key=${API_KEY}&with_genres=35`,
+    media: "movie",
   },
-  getAdventureMovies: {
+  {
+    title: "Action",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
+    media: "movie",
+  },
+  {
     title: "Adventure",
     url: `/discover/movie?api_key=${API_KEY}&with_genres=12`,
+    media: "movie",
   },
-  getPopularRegionMovies: {
+  {
+    title: "Science Fiction",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=878`,
+    media: "movie",
+  },
+  {
+    title: "Horror",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
+    media: "movie",
+  },
+  {
+    title: "Drama",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=18`,
+    media: "movie",
+  },
+  {
     title: "Popular in your Region",
     url: `/discover/movie?api_key=${API_KEY}&region=IN`,
+    media: "movie",
   },
-  getWillSmithMovies: {
+  {
     title: "Will Smith's Hits",
     url: `/discover/movie?api_key=${API_KEY}&with_people=2888`,
+    media: "movie",
   },
-  getShortMovies: {
+  {
+    title: "Thriller",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=53`,
+    media: "movie",
+  },
+  {
+    title: "Crime",
+    url: `/discover/movie?api_key=${API_KEY}&with_genres=80`,
+    media: "movie",
+  },
+  {
     title: "Short Films",
     url: `/discover/movie?api_key=${API_KEY}&with_runtime.lte=70`,
+    media: "movie",
   },
-};
+];
 
 export default requests;

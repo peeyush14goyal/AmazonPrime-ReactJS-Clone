@@ -6,7 +6,14 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import HoverScreen from "../HoverScreen";
 import { Link } from "react-router-dom";
 
-const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
+const MediaScreen = ({
+  heading,
+  fetchURL,
+  API_KEY,
+  genre = -1,
+  moveCount,
+  media_type,
+}) => {
   const [data, setData] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original/";
   var count = 0;
@@ -24,6 +31,9 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: -800,
     });
+    if (count === -5.4) {
+      count = -5;
+    }
     count++;
 
     console.log("Left count is ", count);
@@ -37,8 +47,8 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
     });
     count--;
     console.log("RIght count is ", count);
-    if (count < -3) {
-      count = -3;
+    if (count < -6) {
+      count = -6;
     }
   };
 
@@ -48,12 +58,9 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
     if (divItem) {
       divItem.style.position = "absolute";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
-      if (count === -3) {
-        count = -2.8;
-      }
       divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
-      return divItem.style;
     }
+    return divItem.style;
   };
 
   const shuffleData = (arr) => {
@@ -88,23 +95,31 @@ const MediaScreen = ({ heading, fetchURL, API_KEY, genre = -1, moveCount }) => {
         {data.map((item) => {
           return (
             <div key={item.id}>
-              <div
-                className="mediaDiv"
-                id={`1${item.id}`}
-                onMouseEnter={() => {
-                  setPosition(item);
-                }}
-              >
-                <img
-                  src={`${base_url}${item.backdrop_path}`}
-                  alt={item.name}
-                  className="mediaImg"
-                />
+              {item.backdrop_path ? (
+                <div
+                  className="mediaDiv"
+                  id={`1${item.id}`}
+                  onMouseEnter={() => {
+                    setPosition(item);
+                  }}
+                >
+                  <img
+                    src={`${base_url}${item.backdrop_path}`}
+                    alt={item.name}
+                    className="mediaImg"
+                  />
 
-                <div className="displayhoverScreen" id={`2${item.id}`}>
-                  <HoverScreen item={item} api_key={API_KEY} />
+                  <div className="displayhoverScreen" id={`2${item.id}`}>
+                    <HoverScreen
+                      item={item}
+                      api_key={API_KEY}
+                      media_type={media_type}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           );
         })}

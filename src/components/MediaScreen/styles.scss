@@ -7,10 +7,11 @@
 }
 .banner {
   display: flex;
+  left: 10px;
   overflow-y: hidden;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  justify-content: space-around;
+  justify-content: space-between;
   z-index: -1;
 }
 .banner::-webkit-scrollbar {
@@ -23,6 +24,7 @@
   width: 30px;
   color: gray;
   position: absolute;
+  margin-top: 10px;
   -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
   transition: opacity 0.25s ease, background-color 0.25s ease;
   background-color: rgba(15, 23, 30, 0.5);
@@ -119,8 +121,3 @@
 .moreButton:hover {
   color: white;
 }
-// .hoverPosition {
-//   position: relative;
-//   overflow: visible;
-//   z-index: 2;
-// }

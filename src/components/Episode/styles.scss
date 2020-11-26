@@ -1,0 +1,27 @@
+.EpisodeDiv {
+  display: grid;
+  grid-template-columns: 2fr 9fr 1fr;
+  min-height: 200px;
+  background-color: #0f171e;
+  color: gray;
+}
+.episodeImg {
+  max-height: 201px;
+  max-width: 268px;
+}
+.episodeTitle {
+  display: flex;
+  font-size: 20px;
+  color: white;
+}
+.paddingInfoDiv {
+  padding-left: 25px;
+}
+.playButtonEpisode {
+  margin-top: 0px;
+  transform: scale(1.5);
+}
+.episodeTitleText {
+  margin-top: 5px;
+  margin-left: 15px;
+}

@@ -10,15 +10,18 @@ import MediaScreen from "../MediaScreen";
 import CancelIcon from "@material-ui/icons/Cancel";
 import IconButton from "@material-ui/core/IconButton";
 import YouTube from "react-youtube";
+import Episode from "../Episode/index";
 
-const Movie = ({ api_key }) => {
+const TV = ({ api_key }) => {
   const [credits, setCredits] = useState();
   const [movieDetails, setDetails] = useState();
   const [videos, setVideo] = useState();
   const [detailShow, setShow] = useState(1);
   const [YoutubePlay, setYoutubePlay] = useState(false);
   const [trailer_id, setTrailer_id] = useState();
-  const base_url = "https://api.themoviedb.org/3/movie/";
+  const [episodes, setEpisodes] = useState();
+  const [seasonCount, setseasonCount] = useState();
+  const base_url = "https://api.themoviedb.org/3/tv/";
   let detailsLoaded = false;
   let creditsLoaded = false;
   let hours, minutes;
@@ -47,7 +50,14 @@ const Movie = ({ api_key }) => {
       const response = await axios.get(
         `${base_url}${movie_id}?api_key=${api_key}`
       );
-      console.log("Movie details are", response.data);
+      console.log("TV details are", response.data);
+      const temp = response.data.number_of_seasons;
+      var tempArr = [];
+      for (let i = 1; i <= temp; i++) {
+        tempArr.push(i);
+      }
+      console.log("Temp arr is ", tempArr);
+      setseasonCount(tempArr);
       setDetails(response.data);
       return response;
     }
@@ -55,7 +65,7 @@ const Movie = ({ api_key }) => {
       const response = await axios.get(
         `${base_url}${movie_id}/credits?api_key=${api_key}`
       );
-      console.log("Credits are ", response.data);
+      console.log("TV Credits are ", response.data);
       setCredits(response.data);
     }
     async function getVideo() {
@@ -65,29 +75,47 @@ const Movie = ({ api_key }) => {
       console.log(response.data.results);
       setVideo(response.data.results);
     }
+    async function getDefaultEpisodes() {
+      const response = await axios.get(
+        `${base_url}${movie_id}/season/1?api_key=${api_key}`
+      );
+      console.log("Default ", response.data.episodes);
+      setEpisodes(response.data.episodes);
+    }
     fetchCredits();
     fetchDetails();
     getVideo();
+    getDefaultEpisodes();
   }, [base_url, movie_id, api_key]);
 
   const playVideo = () => {
-    console.log("Videos are ", videos);
+    console.log("TV Videos are ", videos);
     if (videos) {
       setYoutubePlay(true);
       // videos.map((video) => {
       setTrailer_id(videos[0].key);
-      console.log("Id is ", trailer_id);
-      console.log("Youtube PLay value is ", YoutubePlay);
+      console.log("TV Id is ", trailer_id);
+      console.log("TV Youtube PLay value is ", YoutubePlay);
       //setplay(0);
       //console.log(play);
 
       //});
     } else {
       setYoutubePlay(false);
-      console.log(" 0 Youtube PLay value is ", YoutubePlay);
+      console.log("TV 0 Youtube PLay value is ", YoutubePlay);
     }
     return trailer_id;
   };
+
+  async function getEpisodes() {
+    const temp = document.getElementById("selectIdTag").value;
+    const val = temp.substr(7, 8);
+    const response = await axios.get(
+      `${base_url}${movie_id}/season/${val}?api_key=${api_key}`
+    );
+    console.log(response.data);
+    setEpisodes(response.data.episodes);
+  }
 
   if (movieDetails) {
     detailsLoaded = true;
@@ -130,6 +158,25 @@ const Movie = ({ api_key }) => {
               {movieDetails.overview}
             </div>
             <div className="moviefooterScreen">
+              <div>
+                {seasonCount.length > 0 ? (
+                  <select
+                    className="selectTag"
+                    id="selectIdTag"
+                    onChange={() => {
+                      getEpisodes();
+                    }}
+                  >
+                    {seasonCount.map((val) => {
+                      return (
+                        <option className="optionTag">Season {val}</option>
+                      );
+                    })}
+                  </select>
+                ) : (
+                  <div></div>
+                )}
+              </div>
               <div className="movierating">
                 IMDb {movieDetails.vote_average}
               </div>
@@ -138,11 +185,10 @@ const Movie = ({ api_key }) => {
                 {minutes > 0 ? `${minutes}min` : ""}
               </div>
               <div className="moviereleaseYear">
-                {movieDetails.release_date
-                  ? movieDetails.release_date.substr(0, 4)
+                {movieDetails.first_air_date
+                  ? movieDetails.first_air_date.substr(0, 4)
                   : ""}
               </div>
-
               <div className="movierated">
                 {movieDetails.adult ? "18+" : "ALL"}
               </div>
@@ -266,33 +312,44 @@ const Movie = ({ api_key }) => {
         <div></div>
       )}
       <div className="relatedMovies">
-        <div>
-          <div className="tabHeading">
-            <div
-              onClick={() => {
-                setShow(1);
-              }}
-              className={detailShow === 1 ? "activeRelated" : ""}
-            >
-              Related
-            </div>
-            <div
-              onClick={() => {
-                setShow(0);
-              }}
-              className={detailShow === 0 ? "activeDetails" : ""}
-            >
-              Details
-            </div>
+        <div className="tabHeading">
+          <div
+            onClick={() => {
+              setShow(2);
+            }}
+            className={detailShow === 2 ? "activeRelated" : ""}
+          >
+            Episodes
           </div>
-          {detailsLoaded && detailShow === 1 ? (
+          <div
+            onClick={() => {
+              setShow(1);
+            }}
+            className={detailShow === 1 ? "activeRelated" : ""}
+          >
+            Related
+          </div>
+          <div
+            onClick={() => {
+              setShow(0);
+            }}
+            className={detailShow === 0 ? "activeDetails" : ""}
+          >
+            Details
+          </div>
+        </div>
+        <br />
+        <br />
+        <div>
+          {detailsLoaded && detailShow === 1 && (
             <MediaScreen
               heading="Customers also watched"
               moveCount="movie10"
               API_KEY={api_key}
               fetchURL={`https://api.themoviedb.org/3/movie/${movieDetails.id}/similar?api_key=${api_key}&language=en-US&page=1`}
             />
-          ) : (
+          )}{" "}
+          {detailsLoaded && detailShow === 0 && (
             <div className="detailsCrew">
               <div className="people">
                 {production.length > 0 ? (
@@ -343,6 +400,14 @@ const Movie = ({ api_key }) => {
               </div>
             </div>
           )}
+          {episodes &&
+            episodes.length > 0 &&
+            detailShow === 2 &&
+            episodes.map((episode) => {
+              return (
+                <Episode index={episodes.indexOf(episode)} episode={episode} />
+              );
+            })}
           <br />
           <br />
           <br />
@@ -353,4 +418,4 @@ const Movie = ({ api_key }) => {
     </div>
   );
 };
-export default Movie;
+export default TV;

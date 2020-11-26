@@ -6,19 +6,21 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import axios from "../../axios";
 import { Link } from "react-router-dom";
 
-const HoverScreen = ({ item, api_key }) => {
+const HoverScreen = ({ item, api_key, media_type }) => {
   let hours = 0,
     minutes = 0;
   const [media, setMedia] = useState({});
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get(`/movie/${item.id}?api_key=${api_key}`);
+      const response = await axios.get(
+        `/${media_type}/${item.id}?api_key=${api_key}`
+      );
       setMedia(response.data);
       return response;
     }
     getData();
-  }, [item, api_key]);
+  }, [item, api_key, media_type]);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
   if (media.runtime && media.runtime > 0) {
@@ -28,7 +30,7 @@ const HoverScreen = ({ item, api_key }) => {
   return (
     <div className="hoverScreen">
       <Link
-        to={`/movie?id=${item.id}`}
+        to={`/${media_type}?id=${item.id}`}
         style={{ textDecoration: "none", color: "white" }}
       >
         <img
@@ -48,7 +50,9 @@ const HoverScreen = ({ item, api_key }) => {
               <AddOutlinedIcon className="addIcon" />
             </div>
           </div>
-          <div className="title">{item.title}</div>
+          <div className="title">
+            {item.title ? item.title : item.original_name}
+          </div>
           <div className="overview">
             {item.overview.length > 90
               ? item.overview.substr(0, 89) + "..."
