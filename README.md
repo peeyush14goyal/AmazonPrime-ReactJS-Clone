@@ -2,7 +2,10 @@
 This project is a Amazon Prime Clone. You can run the below commands to see the project on your local system. 
 Hosted on Firebase at https://prime-clone-e1de6.firebaseapp.com/
 This is the version 1 of the project. (Desktop View Only).
-For getting Data I have used TMDB API. For running the App locally you will have to generate your own API_Key and substitute in all requests files and App.js files.
+For getting Data I have used TMDB API. 
+
+## Note For Developers
+For running the App locally you will have to generate your own API_Key and substitute in all requests files and App.js files.
 You can check out other ReactJs projects as well in other repositories deployed on firebase.
 
 Icons from Material UI library have been used. Link is https://material-ui.com/components/material-icons/
