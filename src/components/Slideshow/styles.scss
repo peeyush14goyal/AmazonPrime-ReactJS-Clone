@@ -11,8 +11,8 @@
 .ssDiv {
   display: none;
   position: relative;
-  min-height: 800px;
-  max-height: 800px;
+  min-height: 900px;
+  max-height: 1000px;
 }
 
 .ssOverview {
@@ -39,5 +39,7 @@
   display: block;
   width: 100%;
   object-fit: cover;
+  max-height: 900px;
   opacity: 0.5;
+  // margin-bottom: 50px;
 }

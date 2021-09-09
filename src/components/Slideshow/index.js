@@ -41,8 +41,6 @@ const Slideshow = ({ fetch_url, api_key }) => {
     fetchData();
   }, [fetch_url, api_key]);
 
-  console.log(sshow);
-
   return (
     <div>
       {sshow.map((item) => {
