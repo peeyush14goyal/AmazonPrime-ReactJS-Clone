@@ -1,6 +1,6 @@
 ## Amazon Prime Clone
 This project is a Amazon Prime Clone. You can run the below commands to see the project on your local system. 
-Hosted on Firebase at https://prime-clone-e1de6.firebaseapp.com/
+Hosted on Firebase at https://prime-clone-2fcfe.web.app/
 This is the version 1 of the project. (Desktop View Only).
 For getting Data I have used TMDB API. 
 
