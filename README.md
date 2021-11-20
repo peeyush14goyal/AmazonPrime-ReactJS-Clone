@@ -37,6 +37,9 @@ Screenshots of the App:
 
 #### Contact Details: Email id => peeyushgoyal154@gmail.com
 
+## Featured
+https://freesoff.com/t/160-open-source-clones-of-popular-sites/88788
+
 ## Available Scripts
 
 In the project directory, you can run:
