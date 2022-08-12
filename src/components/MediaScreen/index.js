@@ -31,36 +31,22 @@ const MediaScreen = ({
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: -800,
     });
-    if (count === -5.4) {
-      count = -5;
-    }
-    count++;
-
-    console.log("Left count is ", count);
-    if (count > 0) {
-      count = 0;
-    }
   };
   const scrollToRight = () => {
     document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
       left: 800,
     });
-    count--;
-    console.log("RIght count is ", count);
-    if (count < -6) {
-      count = -6;
-    }
   };
 
   const setPosition = (item) => {
     var x = document.getElementById(`1${item.id}`);
     var divItem = document.getElementById(`2${item.id}`);
+    const ele = document.getElementById("bannerDiv" + moveCount.toString());
     if (divItem) {
       divItem.style.position = "absolute";
-      divItem.style.top = parseInt(x.offsetTop, 10) + "px";
-      divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
+      divItem.style.top = x.offsetTop + "px";
+      divItem.style.left = x.offsetLeft - ele.scrollLeft + "px";
     }
-    return divItem.style;
   };
 
   const shuffleData = (arr) => {

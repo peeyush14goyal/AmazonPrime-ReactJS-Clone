@@ -38,7 +38,6 @@ const AllContent = ({ API_KEY }) => {
     getData();
   }, [genre_id, API_KEY]);
 
-  console.log(allcontent);
   return (
     <div>
       <br />

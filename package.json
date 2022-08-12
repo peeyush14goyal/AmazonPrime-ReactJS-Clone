@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "firebase": "^9.0.1",
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-pure-lifecycle": "^3.0.0",
@@ -19,7 +18,8 @@
     "react-scripts": "3.4.3",
     "react-youtube": "^7.13.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.54.4"
   },
   "scripts": {
     "start": "react-scripts start",

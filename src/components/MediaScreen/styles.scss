@@ -85,8 +85,9 @@
     transform: scale(1);
   }
   &:hover > .displayhoverScreen {
-    //position: absolute;
+    //
     display: block;
+    position: absolute;
 
     // padding: 1px;
     //z-index: 3;

@@ -50,13 +50,13 @@ const TV = ({ api_key }) => {
       const response = await axios.get(
         `${base_url}${movie_id}?api_key=${api_key}`
       );
-      console.log("TV details are", response.data);
+
       const temp = response.data.number_of_seasons;
       var tempArr = [];
       for (let i = 1; i <= temp; i++) {
         tempArr.push(i);
       }
-      console.log("Temp arr is ", tempArr);
+
       setseasonCount(tempArr);
       setDetails(response.data);
       return response;
@@ -65,21 +65,21 @@ const TV = ({ api_key }) => {
       const response = await axios.get(
         `${base_url}${movie_id}/credits?api_key=${api_key}`
       );
-      console.log("TV Credits are ", response.data);
+
       setCredits(response.data);
     }
     async function getVideo() {
       const response = await axios.get(
         `${base_url}${movie_id}/videos?api_key=${api_key}`
       );
-      console.log(response.data.results);
+
       setVideo(response.data.results);
     }
     async function getDefaultEpisodes() {
       const response = await axios.get(
         `${base_url}${movie_id}/season/1?api_key=${api_key}`
       );
-      console.log("Default ", response.data.episodes);
+
       setEpisodes(response.data.episodes);
     }
     fetchCredits();
@@ -89,20 +89,12 @@ const TV = ({ api_key }) => {
   }, [base_url, movie_id, api_key]);
 
   const playVideo = () => {
-    console.log("TV Videos are ", videos);
     if (videos) {
       setYoutubePlay(true);
-      // videos.map((video) => {
-      setTrailer_id(videos[0].key);
-      console.log("TV Id is ", trailer_id);
-      console.log("TV Youtube PLay value is ", YoutubePlay);
-      //setplay(0);
-      //console.log(play);
 
-      //});
+      setTrailer_id(videos[0].key);
     } else {
       setYoutubePlay(false);
-      console.log("TV 0 Youtube PLay value is ", YoutubePlay);
     }
     return trailer_id;
   };
@@ -113,7 +105,7 @@ const TV = ({ api_key }) => {
     const response = await axios.get(
       `${base_url}${movie_id}/season/${val}?api_key=${api_key}`
     );
-    console.log(response.data);
+
     setEpisodes(response.data.episodes);
   }
 
@@ -299,7 +291,7 @@ const TV = ({ api_key }) => {
               <CancelIcon />
             </IconButton>
           </div>
-          {console.log("Trailer id length is ", trailer_id)}
+
           <YouTube
             videoId={trailer_id}
             opts={opts}
